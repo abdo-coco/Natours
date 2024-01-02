@@ -16,7 +16,7 @@ const hpp = require("hpp");
 const path = require("path");
 const cookieParser = require("cookie-parser");
 require("dotenv").config({ path: "./config.env" });
-
+// start express
 app.use(express.static("static"));
 app.use(express.static(path.resolve(__dirname, "public")));
 app.set("view engine", "pug");
