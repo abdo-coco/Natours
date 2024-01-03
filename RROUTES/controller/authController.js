@@ -86,7 +86,7 @@ exports.protect = catchAsync(async (req, res, next) => {
     next(new AppError("JWT verification failed", 401));
   }
   const currentUser = await User.findById(decode.id);
-  console.log(currentUser);
+  // console.log(currentUser);
 
   if (currentUser === null) {
     return next(

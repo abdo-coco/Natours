@@ -82,7 +82,7 @@ exports.updateMe = catchAsync(async (req, res, next) => {
 });
 
 exports.checkID = (req, res, next, val) => {
-  console.log(`ID TOUT is ${val}`);
+  // console.log(`ID TOUT is ${val}`);
   if (+req.params.id > tours.length) {
     return res.status(404).json({
       statue: "failed",

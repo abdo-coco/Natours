@@ -14,6 +14,7 @@ const mongoSanitize = require("express-mongo-sanitize");
 const helmet = require("helmet");
 const hpp = require("hpp");
 const path = require("path");
+const compression = require("compression");
 const cookieParser = require("cookie-parser");
 require("dotenv").config({ path: "./config.env" });
 // start express
@@ -49,11 +50,13 @@ app.use(
     ],
   })
 );
+app.use(compression());
 // app.use((req, res, next) => {
 //   console.log(req.cookies);
 
 //   next();
 // });
+
 app.use("/", viewRouter);
 app.use("/api/v1/tours", tourRouter);
 app.use("/api/v1/users", userRouter);

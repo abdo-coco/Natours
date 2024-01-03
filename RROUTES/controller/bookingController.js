@@ -4,13 +4,12 @@ const Booking = require("./../../model/bookingmodel.js");
 const catchAsync = require("./../../RROUTES/controller/catchAsync.js");
 const factory = require("./../controller/handlerFactory.js");
 require("dotenv").config({ path: "../../config.env" });
-console.log("Stripe Secret Key:", process.env.STRIPE_SECRET_KEY);
+// console.log("Stripe Secret Key:", process.env.STRIPE_SECRET_KEY);
 const stripe = require("stripe")(
   "sk_test_51OP4VoDCnw9REc2PBXBfrtnO9A2cHY7baG0EBWaTUEno6RRNAdK2grf6ALYaaDiGUxgUwdMz49WvJAs4LHE3yW5200P8M7J5HN"
 );
 exports.getCheckoutSession = catchAsync(async (req, res, next) => {
   const tour = await Tour.findById(req.params.tourId);
-  console.log("alli mobark");
   const session = await stripe.checkout.sessions.create({
     payment_method_types: ["card"],
     success_url: `${req.protocol}://${req.get("host")}/?tour=${

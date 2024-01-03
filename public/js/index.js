@@ -8,13 +8,12 @@ const updateBtn = document.querySelector(".form-user-data");
 const updatepassword = document.querySelector(".form-user-password");
 const bookingBtn = document.getElementById("book-tour");
 
-console.log("abdo");
 if (loginBtn) {
   loginBtn.addEventListener("submit", (e) => {
     e.preventDefault();
     const email = document.getElementById("email").value;
     const password = document.getElementById("password").value;
-    console.log(email, password);
+    // console.log(email, password);
     login(email, password);
   });
 }
@@ -55,6 +54,6 @@ if (bookingBtn)
     e.preventDefault();
     e.target.textContent = "Processing....";
     const { tourId } = e.target.dataset;
-    console.log(tourId);
+    // console.log(tourId);
     booking(tourId);
   });

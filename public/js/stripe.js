@@ -8,10 +8,10 @@ const stripe = Stripe(
 export const booking = async (tourId) => {
   try {
     const session = await axios.get(
-      `http://127.0.0.1:3000/api/v1/bookings/checkout-session/${tourId}`
+      `/api/v1/bookings/checkout-session/${tourId}`
     );
-    console.log(session);
-    console.log("ali");
+    // console.log(session);
+
     if (session.data) {
       await stripe.redirectToCheckout({
         sessionId: session.data.session.id,
@@ -21,7 +21,7 @@ export const booking = async (tourId) => {
         "Session data is undefined or does not have the expected structure."
       );
     }
-    console.log(tourId);
+    // console.log(tourId);
   } catch (error) {
     console.log(error);
     showAlert("error", error);
